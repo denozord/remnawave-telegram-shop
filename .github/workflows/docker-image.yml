@@ -77,14 +77,3 @@ jobs:
           echo "message<<EOF" >> $GITHUB_OUTPUT
           echo "$TAG_MSG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Send Telegram notification
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ✅ Build finished.
-            🛠️ ${{ github.ref_name }}
-            📝 Message: ${{ steps.commit-message.outputs.message }}
-            🔗 Image: ghcr.io/${{ github.repository_owner }}/remnawave-telegram-shop-bot:${{ github.ref_name }}
